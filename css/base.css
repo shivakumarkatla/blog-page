@@ -1,0 +1,252 @@
+/* ==========================================================================
+   BASE.CSS
+   Reset, design tokens (CSS custom properties), and base typography.
+   This file sets the foundation — no component or layout rules here.
+   ========================================================================== */
+
+/* ---------- 1. CSS RESET ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- 2. DESIGN TOKENS ---------- */
+:root {
+  /* --- Color: Light theme (default) ---
+     "Paper & ink" palette — warm paper background, near-black ink text,
+     deep plum accent instead of the generic blue/terracotta defaults. */
+  --color-bg: #FBF8F3;
+  --color-surface: #F3EEE4;
+  --color-surface-raised: #FFFFFF;
+  --color-text-primary: #241F1C;
+  --color-text-secondary: #6B615A;
+  --color-border: #E2D9CB;
+  --color-accent: #6B2D5C;
+  --color-accent-hover: #551F49;
+  --color-accent-soft: #F1E4EC;
+  --color-focus-ring: #1D5C63;
+  --color-danger: #B3261E;
+  --color-success: #2E6B4F;
+
+  /* Illustration tones (derived from accent, used in decorative SVGs) */
+  --illo-bg: #F1E4EC;
+  --illo-accent: #D8B8CC;
+  --illo-line: #6B2D5C;
+
+  /* --- Typography --- */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Literata', Georgia, 'Times New Roman', serif;
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --font-size-body: 1rem;
+  --line-height-body: 1.65;
+  --line-height-heading: 1.15;
+
+  /* Fluid type scale via clamp(): min, preferred (viewport-based), max */
+  --font-size-xs: 0.8125rem;
+  --font-size-sm: 0.9375rem;
+  --font-size-base: 1rem;
+  --font-size-lg: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
+  --font-size-xl: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
+  --font-size-h3: clamp(1.375rem, 1.15rem + 1vw, 1.75rem);
+  --font-size-h2: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  --font-size-h1: clamp(2.25rem, 1.6rem + 3vw, 3.75rem);
+
+  /* Max reading width for long-form text */
+  --measure: 68ch;
+
+  /* --- Spacing scale (4px base unit) --- */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.5rem;    /* 24px */
+  --space-6: 2rem;      /* 32px */
+  --space-7: 2.5rem;    /* 40px */
+  --space-8: 3rem;      /* 48px */
+  --space-9: 4rem;      /* 64px */
+  --space-10: 5rem;     /* 80px */
+  --space-12: 6rem;     /* 96px */
+
+  /* --- Radius --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* --- Shadows (soft, warm-tinted for light theme) --- */
+  --shadow-sm: 0 1px 2px rgba(36, 31, 28, 0.06);
+  --shadow-md: 0 4px 12px rgba(36, 31, 28, 0.08);
+  --shadow-lg: 0 12px 32px rgba(36, 31, 28, 0.12);
+
+  /* --- Layout --- */
+  --container-max: 1200px;
+  --container-padding: var(--space-4);
+
+  /* --- Breakpoints (referenced in comments; media queries use raw px) ---
+     --bp-sm: 480px
+     --bp-md: 768px
+     --bp-lg: 1024px
+     --bp-xl: 1280px */
+
+  /* --- Motion --- */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+}
+
+/* --- Dark theme overrides, applied via [data-theme="dark"] on <html> --- */
+[data-theme='dark'] {
+  --color-bg: #17151A;
+  --color-surface: #1F1C22;
+  --color-surface-raised: #262229;
+  --color-text-primary: #F2EEE9;
+  --color-text-secondary: #B3A9A0;
+  --color-border: #34303A;
+  --color-accent: #E3A6CC;
+  --color-accent-hover: #EFC2DE;
+  --color-accent-soft: #362833;
+  --color-focus-ring: #7FD6DE;
+  --color-danger: #E4756D;
+  --color-success: #7FCBA4;
+
+  --illo-bg: #2A2130;
+  --illo-accent: #4A3448;
+  --illo-line: #E3A6CC;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* ---------- 3. BASE TYPOGRAPHY ---------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: var(--font-size-h1); }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); }
+h4 { font-size: var(--font-size-xl); }
+
+p {
+  max-width: var(--measure);
+}
+
+a {
+  transition: color var(--transition-fast);
+}
+
+/* ---------- 4. ACCESSIBILITY UTILITIES ---------- */
+
+/* Visually hidden but available to assistive tech */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip link: hidden until focused, then jumps to top of viewport */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-4);
+  z-index: 1000;
+  padding: var(--space-3) var(--space-5);
+  background-color: var(--color-accent);
+  color: #FFFFFF;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+/* Consistent, visible focus ring for keyboard users across the whole site */
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Remove default focus ring only when a visible one is guaranteed above */
+:focus:not(:focus-visible) {
+  outline: none;
+}

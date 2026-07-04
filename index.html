@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marginalia — Notes on technology, design & culture</title>
+  <meta name="description" content="Marginalia is a field-notes blog on technology, design and culture — long-form essays, short observations, and everything in the margins.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Marginalia — Notes on technology, design & culture">
+  <meta property="og:description" content="Long-form essays and short observations on technology, design and culture.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts: Fraunces (display), Literata (body/reading), Inter (UI/meta) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets: split by responsibility, loaded in cascade order -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/utilities.css">
+</head>
+<body>
+
+  <!-- Skip link: first focusable element, lets keyboard users bypass nav -->
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <!-- ============ SITE HEADER ============ -->
+  <header class="site-header" id="site-header">
+    <nav class="nav" aria-label="Primary">
+      <div class="nav__brand">
+        <a href="index.html" class="logo" aria-label="Marginalia — home">
+          <span class="logo__mark" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <path d="M6 4C6 4 9 2 14 2C19 2 22 4 22 4V22C22 22 19 20 14 20C9 20 6 22 6 22V4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M14 2V20" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </span>
+          <span class="logo__text">Marginalia</span>
+        </a>
+      </div>
+
+      <!-- Mobile menu toggle -->
+      <button type="button" class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-menu">
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+        <span class="sr-only">Open menu</span>
+      </button>
+
+      <div class="nav__collapse" id="primary-menu">
+        <ul class="nav__menu">
+          <li><a href="index.html" class="nav__link" aria-current="page">Home</a></li>
+          <li><a href="archive.html" class="nav__link">Archive</a></li>
+          <li><a href="about.html" class="nav__link">About</a></li>
+          <li><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+
+        <div class="nav__actions">
+          <form class="nav__search" role="search" action="archive.html" method="get">
+            <label for="nav-search-input" class="sr-only">Search posts</label>
+            <input type="search" id="nav-search-input" name="q" class="nav__search-input" placeholder="Search posts…" autocomplete="off">
+            <button type="submit" class="nav__search-btn" aria-label="Submit search">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M16 16L12.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </form>
+
+          <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false" aria-label="Switch to dark theme">
+            <svg class="theme-toggle__icon theme-toggle__icon--sun" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M10 1.5V3.5M10 16.5V18.5M18.5 10H16.5M3.5 10H1.5M15.8 4.2L14.4 5.6M5.6 14.4L4.2 15.8M15.8 15.8L14.4 14.4M5.6 5.6L4.2 4.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <svg class="theme-toggle__icon theme-toggle__icon--moon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M17 11.5C15.9 12.1 14.6 12.4 13.3 12.2C10.2 11.8 7.8 9.2 7.6 6.1C7.5 4.8 7.8 3.6 8.3 2.5C4.9 3.3 2.5 6.4 2.5 10C2.5 14.1 5.9 17.5 10 17.5C13.4 17.5 16.3 15.3 17 11.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main id="main-content">
+
+    <!-- ---------- HERO ---------- -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container hero__inner">
+        <p class="hero__eyebrow">Field notes on technology, design &amp; culture</p>
+        <h1 id="hero-heading" class="hero__heading">Ideas worth writing in the margins.</h1>
+        <p class="hero__lead">Long-form essays and short observations from a working notebook — on how we build things, why they matter, and what gets lost in translation.</p>
+      </div>
+    </section>
+
+    <!-- ---------- FEATURED POST ---------- -->
+    <section class="featured" aria-labelledby="featured-heading">
+      <div class="container">
+        <h2 id="featured-heading" class="sr-only">Featured post</h2>
+
+        <article class="featured-post">
+          <a href="post.html" class="featured-post__figure" aria-hidden="true" tabindex="-1">
+            <svg viewBox="0 0 400 320" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <rect width="400" height="320" class="illo-bg"/>
+              <path d="M60 240C110 200 150 260 200 220C250 180 290 240 340 210" stroke="currentColor" stroke-width="2" fill="none" class="illo-line"/>
+              <circle cx="120" cy="110" r="46" class="illo-accent"/>
+              <path d="M170 90 L260 60 L260 150 L170 180 Z" fill="none" stroke="currentColor" stroke-width="1.5" class="illo-line"/>
+            </svg>
+          </a>
+
+          <div class="featured-post__content">
+            <ul class="tag-list" aria-label="Post tags">
+              <li><a href="archive.html?tag=design" class="tag-pill">Design</a></li>
+              <li><a href="archive.html?tag=technology" class="tag-pill">Technology</a></li>
+            </ul>
+
+            <h3 class="featured-post__title">
+              <a href="post.html">The quiet cost of a thousand small defaults</a>
+            </h3>
+
+            <blockquote class="featured-post__quote">
+              <p>“Every default you never questioned is a decision someone else made for you — usually in a hurry.”</p>
+            </blockquote>
+
+            <p class="featured-post__excerpt">On the invisible choices baked into the tools we use every day, and why revisiting them is one of the most underrated forms of craftsmanship.</p>
+
+            <div class="post-meta">
+              <span class="post-meta__avatar" role="img" aria-label="Author: Jordan Ellis">JE</span>
+              <div class="post-meta__details">
+                <span class="post-meta__name">Jordan Ellis</span>
+                <span class="post-meta__sep" aria-hidden="true">·</span>
+                <time class="post-meta__date" datetime="2026-06-24">Jun 24, 2026</time>
+                <span class="post-meta__sep" aria-hidden="true">·</span>
+                <span class="post-meta__read-time">7 min read</span>
+              </div>
+            </div>
+
+            <a href="post.html" class="btn btn--primary">Read the essay</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ---------- RECENT POSTS ---------- -->
+    <section class="posts" aria-labelledby="posts-heading">
+      <div class="container">
+        <div class="posts__header">
+          <h2 id="posts-heading" class="section-heading">Recent posts</h2>
+        </div>
+
+        <!-- Category filters: JS toggles aria-pressed and filters #postGrid -->
+        <div class="posts__filters" role="group" aria-label="Filter posts by category">
+          <button type="button" class="pill pill--filter is-active" data-category="all" aria-pressed="true">All</button>
+          <button type="button" class="pill pill--filter" data-category="technology" aria-pressed="false">Technology</button>
+          <button type="button" class="pill pill--filter" data-category="design" aria-pressed="false">Design</button>
+          <button type="button" class="pill pill--filter" data-category="culture" aria-pressed="false">Culture</button>
+          <button type="button" class="pill pill--filter" data-category="writing" aria-pressed="false">Writing</button>
+        </div>
+
+        <!-- Post grid: populated by js/render-posts.js from js/posts-data.js -->
+        <div class="posts__grid" id="postGrid" aria-live="polite">
+          <p class="posts__loading" id="postGridLoading">Loading posts…</p>
+        </div>
+
+        <noscript>
+          <p class="posts__noscript">JavaScript is required to load posts here. You can browse everything on the <a href="archive.html">archive page</a>.</p>
+        </noscript>
+
+        <!-- Pagination: populated/controlled by js/render-posts.js -->
+        <nav class="pagination" id="pagination" aria-label="Posts pagination"></nav>
+      </div>
+    </section>
+
+    <!-- ---------- NEWSLETTER ---------- -->
+    <section class="newsletter" aria-labelledby="newsletter-heading">
+      <div class="container newsletter__inner">
+        <div class="newsletter__text">
+          <h2 id="newsletter-heading" class="section-heading">Get new posts in your inbox</h2>
+          <p>One email whenever something new is published. No spam, unsubscribe anytime.</p>
+        </div>
+
+        <form class="newsletter__form" id="newsletter-form" novalidate>
+          <div class="form-field">
+            <label for="newsletter-email" class="sr-only">Email address</label>
+            <input
+              type="email"
+              id="newsletter-email"
+              name="email"
+              class="form-field__input"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+              aria-describedby="newsletter-status"
+            >
+            <button type="submit" class="btn btn--primary">Subscribe</button>
+          </div>
+          <p class="form-status" id="newsletter-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ SITE FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="logo" aria-label="Marginalia — home">
+          <span class="logo__text">Marginalia</span>
+        </a>
+        <p class="footer__tagline">Notes on technology, design &amp; culture.</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="archive.html">Archive</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__social">
+        <span class="footer__social-label">Follow</span>
+        <ul class="social-list">
+          <li>
+            <a href="https://twitter.com" class="social-list__link" aria-label="Marginalia on X (Twitter)">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <path d="M2 2L16 16M16 2L2 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://rss.com" class="social-list__link" aria-label="Marginalia RSS feed">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <circle cx="4" cy="14" r="1.5" fill="currentColor"/>
+                <path d="M3 8C7.97 8 12 12.03 12 17M3 3C11.28 3 17 8.72 17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>&copy; <span id="current-year">2026</span> Marginalia. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M9 14V3M9 3L4 8M9 3L14 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <!-- ============ SCRIPTS (deferred, executed in document order) ============ -->
+  <script src="js/utils.js" defer></script>
+  <script src="js/posts-data.js" defer></script>
+  <script src="js/render-posts.js" defer></script>
+  <script src="js/search.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/form-validation.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
